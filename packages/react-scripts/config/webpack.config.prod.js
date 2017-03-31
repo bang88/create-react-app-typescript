@@ -36,6 +36,8 @@ var shouldUseRelativeAssetPaths = publicPath === './';
 var publicUrl = publicPath.slice(0, -1);
 // Get environment variables to inject into our app.
 var env = getClientEnvironment(publicUrl);
+// custom config
+var config = require('./config')
 
 // Assert this just to be safe.
 // Development builds of React are slow and not intended for production.
@@ -130,10 +132,10 @@ module.exports = {
           /\.html$/,
           /\.(js|jsx)$/,
           /\.(ts|tsx)$/,
+          /\.less$/,
           /\.css$/,
           /\.json$/,
-          /\.svg$/,
-          /\.less$/
+          /\.svg$/
         ],
         loader: 'url',
         query: {
@@ -145,12 +147,7 @@ module.exports = {
       {
         test: /\.(ts|tsx)$/,
         include: paths.appSrc,
-        loader: 'babel!ts',
-        query: {
-          plugins: [
-            ['import', [{ libraryName: 'antd', style: true }]]
-          ]
-        }
+        loader: 'babel?' + JSON.stringify(config.babel) + '!ts'
       },
       // The notation here is somewhat confusing.
       // "postcss" loader applies autoprefixer to our CSS.

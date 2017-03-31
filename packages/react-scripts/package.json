@@ -1,6 +1,6 @@
 {
   "name": "hake-scripts-ts",
-  "version": "1.1.8-beta.2",
+  "version": "1.1.8-beta.8",
   "description": "Configuration and scripts for Create React App.",
   "repository": "wmonk/create-react-app",
   "license": "BSD-3-Clause",
@@ -59,11 +59,11 @@
     "webpack": "1.14.0",
     "webpack-dev-server": "1.16.2",
     "webpack-manifest-plugin": "1.1.0",
-    "whatwg-fetch": "2.0.2"
-  },
-  "devDependencies": {
+    "whatwg-fetch": "2.0.2",
     "less": "^2.7.2",
-    "less-loader": "^4.0.3",
+    "less-loader": "^4.0.3"
+  },
+  "devDependencies": {  
     "react": "^15.3.0",
     "react-dom": "^15.3.0"
   },

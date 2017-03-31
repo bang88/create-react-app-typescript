@@ -33,6 +33,8 @@ var publicPath = '/'
 var publicUrl = ''
 // Get environment variables to inject into our app.
 var env = getClientEnvironment(publicUrl)
+// custom config
+var config = require('./config')
 
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
@@ -132,10 +134,10 @@ module.exports = {
           // https://github.com/facebookincubator/create-react-app/issues/1713
           /\.(js|jsx)(\?.*)?$/,
           /\.(ts|tsx)(\?.*)?$/,
+          /\.less$/,
           /\.css$/,
           /\.json$/,
-          /\.svg$/,
-          /\.less$/
+          /\.svg$/       
         ],
         loader: 'url',
         query: {
@@ -147,12 +149,7 @@ module.exports = {
       {
         test: /\.(ts|tsx)$/,
         include: paths.appSrc,
-        loader: 'babel!ts',
-        query: {
-          plugins: [
-            ['import', [{ libraryName: 'antd', style: true }]]
-          ]
-        }
+        loader: 'babel?' + JSON.stringify(config.babel) + '!ts'
       },
       // "postcss" loader applies autoprefixer to our CSS.
       // "css" loader resolves paths in CSS and adds assets as dependencies.
