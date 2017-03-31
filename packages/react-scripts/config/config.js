@@ -4,7 +4,7 @@
 module.exports = {
   babel: {
     babelrc: false,
-    presets: ['react', 'es2015'],
+    presets: ['react-app'],
     // @remove-on-eject-end
     // This is a feature of `babel-loader` for webpack (not Babel itself).
     // It enables caching results in ./node_modules/.cache/babel-loader/
