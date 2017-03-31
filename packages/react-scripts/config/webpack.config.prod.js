@@ -132,7 +132,8 @@ module.exports = {
           /\.(ts|tsx)$/,
           /\.css$/,
           /\.json$/,
-          /\.svg$/
+          /\.svg$/,
+          /\.less$/
         ],
         loader: 'url',
         query: {
@@ -144,7 +145,12 @@ module.exports = {
       {
         test: /\.(ts|tsx)$/,
         include: paths.appSrc,
-        loader: 'ts',
+        loader: 'babel!ts',
+        query: {
+          plugins: [
+            ['import', [{ libraryName: 'antd', style: true }]]
+          ]
+        }
       },
       // The notation here is somewhat confusing.
       // "postcss" loader applies autoprefixer to our CSS.
@@ -180,7 +186,12 @@ module.exports = {
         query: {
           name: 'static/media/[name].[hash:8].[ext]'
         }
-      }
+      },
+      // Parse less files and modify variables
+      {
+        test: /\.less$/,
+        loader: 'style!css!postcss!less'
+      },
       // ** STOP ** Are you adding a new loader?
       // Remember to add the new extension(s) to the "url" loader exclusion list.
     ]
